@@ -37,6 +37,6 @@ jobs:
 
 
       - name: Push Docker image
-          run : |
+          run: |
             docker tag mlops-app ${{ secrets.DOCKER_USERNAME }}/mlops-app:latest
             docker push ${{ secrets.DOCKER_USERNAME }}/mlops-app:latest
