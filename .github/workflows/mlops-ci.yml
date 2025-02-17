@@ -28,7 +28,7 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t mlops-app -f ./docker_file/Dockerfile .
+          docker build -t mlops-app -f ./api/Dockerfile .
 
       - name: Push Docker image
         run: |
