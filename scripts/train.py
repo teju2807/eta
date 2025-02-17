@@ -1,8 +1,8 @@
 import pandas as pd
 from sklearn.model_selection import train_test_split
+from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 from pycaret.regression import *
 import mlflow
-import mlflow.pycaret
 import pickle
 
 def train_model():
@@ -17,14 +17,23 @@ def train_model():
         best_model = compare_models()
         tuned_model = tune_model(best_model)
         final_model = finalize_model(tuned_model)
-        mlflow.pycaret.log_model(final_model, artifact_path="pycaret_model")
+        
+        # Log model to MLflow
+        mlflow.log_model(final_model, artifact_path="pycaret_model")
+        
+        # Predict on test set
         predictions = predict_model(final_model, data=X_test)
-        from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
+        
+        # Evaluate model
         mae = mean_absolute_error(y_test, predictions['prediction_label'])
         mse = mean_squared_error(y_test, predictions['prediction_label'])
         r2 = r2_score(y_test, predictions['prediction_label'])
+        
+        # Log metrics to MLflow
         mlflow.log_metric("MAE", mae)
         mlflow.log_metric("MSE", mse)
         mlflow.log_metric("R2", r2)
+        
+        # Save model to disk
         pickle.dump(final_model, open('models/model.pkl', 'wb'))
     return {"MAE": mae, "MSE": mse, "R2": r2}
