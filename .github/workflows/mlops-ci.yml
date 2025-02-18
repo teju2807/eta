@@ -28,7 +28,19 @@ jobs:
 
       - name: Train the Model
         run: |
-         python scripts/train.py    
+         python scripts/train.py  
+
+      - name: Upload trained model as artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: trained-model
+          path: models/model.pkl
+
+      - name: Upload MLflow artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: mlruns
+          path: mlruns/
 
       - name: Build Docker image
         run: |
