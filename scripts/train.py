@@ -38,7 +38,7 @@ def train_model():
         final_model = finalize_model(tuned_model)
         
         # Log model to MLflow
-        mlflow.log_model(final_model, artifact_path="pycaret_model")
+        mlflow.sklearn.log_model(final_model, artifact_path="pycaret_model")
         
         # Predict on test set
         predictions = predict_model(final_model, data=X_test)
