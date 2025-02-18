@@ -31,13 +31,13 @@ jobs:
          python scripts/train.py  
 
       - name: Upload trained model as artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: trained-model
           path: models/model.pkl
 
       - name: Upload MLflow artifacts
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: mlruns
           path: mlruns/
