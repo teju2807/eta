@@ -57,3 +57,5 @@ def train_model():
         # Save model to disk
         pickle.dump(final_model, open(os.path.join(model_dir, 'model.pkl'), 'wb'))
     return {"MAE": mae, "MSE": mse, "R2": r2}
+
+train_model()
