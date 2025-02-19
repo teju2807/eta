@@ -11,7 +11,7 @@ if not os.path.exists(model_dir):
     os.makedirs(model_dir)
 
 # Set MLflow tracking URI
-mlflow.set_tracking_uri("http://127.0.0.1:500")  # Replace with actual server URL
+mlflow.set_tracking_uri("http://127.0.0.1:5000")  # Replace with actual server URL
 mlflow.set_experiment("pycaret_distance_prediction")
 print("2222222222222222222222222222")
 
