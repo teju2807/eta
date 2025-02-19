@@ -13,10 +13,12 @@ if not os.path.exists(model_dir):
 # Set MLflow tracking URI
 mlflow.set_tracking_uri("http://localhost:5000")  # Replace with actual server URL
 mlflow.set_experiment("pycaret_distance_prediction")
+print("2222222222222222222222222222")
 
 def train_model():
     # Read the dataset
     df = pd.read_excel('data/old_eta_Data_Set.xlsx')
+    print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
     
     # Convert categorical features to string
     # df[['SOURCE_CLUSTER', 'DESTI_CLUSTER', 'TRUCK_TYPE']] = df[['SOURCE_CLUSTER', 'DESTI_CLUSTER', 'TRUCK_TYPE']].astype(str)
@@ -31,6 +33,7 @@ def train_model():
     with mlflow.start_run():
         # Setup PyCaret
         reg = setup(data=pd.concat([X_train, y_train], axis=1), target='DISTANCE', session_id=123, verbose=True)
+        print("111111111111111111111111111111")
         
         # Train best model
         best_model = compare_models()
@@ -54,7 +57,7 @@ def train_model():
         mlflow.log_metric("R2", r2)
         
         # Save model correctly
-        save_model(final_model, os.path.join(model_dir, 'pycaret_model'))
+        save_model(final_model, os.path.join(model_dir, 'model'))
     
     return {"MAE": mae, "MSE": mse, "R2": r2}
 
