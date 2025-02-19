@@ -36,6 +36,7 @@ def train_model():
         best_model = compare_models()
         tuned_model = tune_model(best_model)
         final_model = finalize_model(tuned_model)
+        print("final_model",final_model)
         
         # Log model to MLflow
         mlflow.sklearn.log_model(final_model, artifact_path="pycaret_model")
