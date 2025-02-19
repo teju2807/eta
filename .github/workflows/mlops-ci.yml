@@ -51,7 +51,15 @@ jobs:
           if-no-files-found: error  # Fails the workflow if model.pkl is missing
 
       - name: Upload MLflow artifacts
-        uses: actions/upload-artifact@v4
+        if: always()  # Ensures it runs even if previous steps fail
+        run: |
+          if [ -d "mlruns" ]; then
+            echo "Uploading MLflow artifacts..."
+          else
+            echo "ERROR: mlruns/ directory not found!"
+            exit 1
+          fi
+      - uses: actions/upload-artifact@v4
         with:
           name: mlruns
           path: mlruns/
