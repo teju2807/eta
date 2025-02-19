@@ -15,8 +15,11 @@ if not os.path.exists(model_dir):
 
 def train_model():
     
+    # Set the MLflow experiment
+    mlflow.set_experiment("pycaret_distance_prediction")
+    
     # Set the tracking URI for MLflow (this is where your MLflow server is running)
-    mlflow.set_tracking_uri(r"D:\ETA\mlops_project\mlruns")  # Replace with your server URL
+    mlflow.set_tracking_uri("http://127.0.0.1:5000")  # Replace with your server URL
 
     # Read the dataset
     df = pd.read_excel('data/old_eta_Data_Set.xlsx')
@@ -28,9 +31,6 @@ def train_model():
     # Split the data into training and testing sets
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=123)
     
-     # Set the MLflow experiment
-    mlflow.set_experiment("pycaret_distance_prediction")
-
     with mlflow.start_run():
         reg = setup(data=pd.concat([X_train, y_train], axis=1), target='DISTANCE', session_id=123)
         best_model = compare_models()
