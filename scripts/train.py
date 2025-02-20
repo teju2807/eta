@@ -74,6 +74,7 @@ def train_distance_model(df):
         
         # Save model correctly
         save_model(final_model, os.path.join(model_dir, 'distance_model'))
+        
 
 def train_speed_model(df):
     start_time = time.time()  # Track execution time
@@ -132,6 +133,7 @@ def train_speed_model(df):
         
         # Save model correctly
         save_model(final_model, os.path.join(model_dir, 'speed_model'))
+        
         
 def train_duration_model(df):
     start_time = time.time()  # Track execution time
