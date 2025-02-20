@@ -71,7 +71,7 @@ def train_distance_model(df):
 
         # Log execution time
         execution_time = time.time() - start_time
-        mlflow.log_metric("Execution Time (seconds)", execution_time)
+        mlflow.log_metric("Execution_Time", execution_time)
         
         # Save model correctly
         save_model(final_model, os.path.join(model_dir, 'distance_model'))
@@ -130,7 +130,7 @@ def train_speed_model(df):
 
         # Log execution time
         execution_time = time.time() - start_time
-        mlflow.log_metric("Execution Time (seconds)", execution_time)
+        mlflow.log_metric("Execution_Time", execution_time)
         
         # Save model correctly
         save_model(final_model, os.path.join(model_dir, 'speed_model'))
@@ -189,7 +189,7 @@ def train_duration_model(df):
 
         # Log execution time
         execution_time = time.time() - start_time
-        mlflow.log_metric("Execution Time (seconds)", execution_time)
+        mlflow.log_metric("Execution_Time", execution_time)
         
         # Save model correctly
         save_model(final_model, os.path.join(model_dir, 'duration_model'))
