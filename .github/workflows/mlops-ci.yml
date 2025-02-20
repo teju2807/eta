@@ -33,7 +33,7 @@ jobs:
           sleep 10  # Give MLflow time to start
 
       - name: Ensure models directory exists
-        run: mkdir -p models
+        run: mkdir -p models mlruns
 
       - name: Train the Model
         env:
@@ -53,7 +53,7 @@ jobs:
       - name: Upload MLflow artifacts
         if: always()  # Ensures it runs even if previous steps fail
         run: |
-          if [ -d "mlruns" ]; then
+          if [ -d "mlruns" ] && [ "$(ls -A mlruns)" ]; then
             echo "Uploading MLflow artifacts..."
           else
             echo "ERROR: mlruns/ directory not found!"
