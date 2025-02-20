@@ -37,7 +37,7 @@ jobs:
 
       - name: Train the Model
         env:
-          MLFLOW_TRACKING_URI: http://127.0.0.1:5000  # Set MLflow tracking URI
+          MLFLOW_TRACKING_URI: https://82a0-103-246-243-242.ngrok-free.app   # Set MLflow tracking URI
         run: python scripts/train.py
 
       - name: Debug model directory
