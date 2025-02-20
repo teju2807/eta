@@ -13,7 +13,7 @@ if not os.path.exists(model_dir):
 # Set MLflow tracking URI
 mlflow.set_tracking_uri("https://745f-103-246-243-242.ngrok-free.app")  # Replace with actual server URL
 print("3333333333333333333333333333333333")
-mlflow.set_experiment("pycaret_distance_prediction")
+mlflow.set_experiment("pycaret_distance_pred")
 print("2222222222222222222222222222")
 
 def train_model():
