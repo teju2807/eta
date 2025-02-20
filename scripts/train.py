@@ -18,7 +18,7 @@ mlflow.set_experiment("pycaret_model_predictions")
 print("2222222222222222222222222222")
 
 def train_distance_model():
-    start_time = time.time()  # Track execution time
+    start_time = time.time(df)  # Track execution time
 
     # Features and target
     X = df[['SOURCE_CLUSTER', 'DESTI_CLUSTER', 'DAY', 'MONTH', 'HOUR', 'TRUCK_TYPE']]
@@ -75,7 +75,7 @@ def train_distance_model():
         # Save model correctly
         save_model(final_model, os.path.join(model_dir, 'distance_model'))
 
-def train_speed_model():
+def train_speed_model(df):
     start_time = time.time()  # Track execution time
 
     # Features and target
@@ -133,7 +133,7 @@ def train_speed_model():
         # Save model correctly
         save_model(final_model, os.path.join(model_dir, 'speed_model'))
         
-def train_duration_model():
+def train_duration_model(df):
     start_time = time.time()  # Track execution time
 
     # Features and target
